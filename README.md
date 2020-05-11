@@ -16,17 +16,23 @@ The MovieLens database contains two datasets that were used for the project.
 ![ratings.csv](ratings.csv): containing the user id, movie id, rating and timestamp for 100,836 movie ratings. 
 
 
-
-
 ## Data Analysis
 
 ![](images/movie_count_per_genre.png)
 
+___
+
 ![](images/average_rating_per_genre.png)
+
+___
 
 ![](images/ratings_boxplot_by_genre.png)
 
+___
+
 ![](images/most_frequently_rated_movies.png)
+
+___
 
 ![](images/movie_count_per_rating.png)
 
