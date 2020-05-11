@@ -11,12 +11,11 @@ The MovieLens database contains two datasets that were used for the project.
 
 ![movies.csv](movies.csv): containing the movie id, title and genres for 9,742 unique movies. 
 
-![](images/movies_df.head.png)
 
 
 ![ratings.csv](ratings.csv): containing the user id, movie id, rating and timestamp for 100,836 movie ratings. 
 
-![](images/ratings_df.head.png)
+
 
 
 ## Data Analysis
