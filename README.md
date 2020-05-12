@@ -2,7 +2,7 @@
 
 ## Objective
 
-Create a recommendation system that will make movie recommendations for new users using datasets from [MovieLens](https://grouplens.org/datasets/movielens/latest/).
+Create a recommendation system using surprise that will make movie recommendations for new users using datasets from [MovieLens](https://grouplens.org/datasets/movielens/latest/).
 
 
 ## The Datasets
@@ -39,48 +39,66 @@ ___
 
 ## Method
 
-### memory based/neighborhood based collaborative filtering:
+## Collaborative Filtering for Recommendation Systems:
 
-With neighborhood-based collaborative filtering methods, you're attempting to quantify just how similar users and items are to one another and getting the top N recommendations based on that similarity metric.
+Surpise, a python library, will be used to analyze different collaborative filtering algorithms for creating a recommendation system. The following algorithms will be created and evaluated
 
-Cross validating with KNNBasic: A basic collaborative filtering algorithm
-Cross validating with KNNBaseline: A basic collaborative filtering algorithm taking into account a baseline rating.
-Cross validating with KNNWithMeans: A basic collaborative filtering algorithm, taking into account the mean ratings of each user.
-Cross validating with KNNWithZScore: A basic collaborative filtering algorithm, taking into account the z-score normalization of each user.
+### memory based/neighborhood based collaborative filtering: 
 
-Parameter grid for KNN: 
-Similarity metrics: 
-    *pearson: Calculate Pearson correlation coefficients between all user (or item) pairs. 
-    *consine: Calculate cosine similarity between all user (or item) pairs. 
-    *MSD: Calculates the mean squared difference between similarity between all users. 
-    *Item-based: measures the similarity between the items that target users rates/interacts with and other items 
-    *User-based: measures the similarity between target users and other users
+Memory based, or neighborhood based, collaborative filtering algorithms quantify how similar users or items are to one another. These algorithms measure similarity between users or items, by different "similarity metrics". User vs items based, and pearson, cosine and MSD similarity metrics, will all be tested within the parameter grids, for each algorithm. The following neighborhood-based collaborative filtering methods will be tested: https://surprise.readthedocs.io/en/stable/knn_inspired.html
 
-### model based collaborative filtering: 
+    *KNNBasic: A basic collaborative filtering algorithm
+    *KNNBaseline: A basic collaborative filtering algorithm taking into account a baseline rating.
+    *KNNWithMeans: A basic collaborative filtering algorithm, taking into account the mean ratings of each user.
+    *KNNWithZScore: A basic collaborative filtering algorithm, taking into account the z-score normalization of each user.
 
-Singular-Value Decomposition or SVD is a common and widely used matrix decomposition method. All matrices are able to be factored using an SVD, which makes it more stable than other methods, such as the eigendecomposition.
+Each of the algorithms will have the following parameter grid:
 
-With Singular-Vale Decomposition, or SVD, the recommendation problem is turned into an optimization problem that deals with how good we are in predicting the rating for items given a user. Two common metrics to score the optimization are Root Mean Square Error, RMSE, and Mean Absolute Error, MAE. The lower the value for each of the scoring metrics, the better the model performed.
+    *Item-based: measure the similarity between the items that target users rates/interacts with and other items
+    vs.
+    *User-based: measure the similarity between target users and other users 
+
+Similarity metrics: https://surprise.readthedocs.io/en/stable/similarities.html
+
+    *pearson: Calculate Pearson correlation coefficients between all user (or item) pairs
+    vs.
+    *cosine: Calculate cosine similarity between all user (or item) pairs
+    vs.
+    *MSD: Calculates the mean squared difference between similarity between all users   
+    
+
+### Model based collaborative filtering: 
+
+Another way to make recommendation systems is by using model based collaborative filtering. Model based filtering can make predictions by viewing the dataset as a matrix, and by decomposing that matrix into individual matrices. This reduction of dimensionality can be completed using Singular-Value Decomposition or SVD. With SVD, the recommendation problem is turned into an optimization problem that deals with how good we are in predicting the rating for items given a user. The optimization is completed by minimizing the squared error using gradient descent. 
+
+https://surprise.readthedocs.io/en/stable/matrix_factorization.html
 
 Alternating least squares is another matrix decomposition method, but it is best used when there are missing values in the matrix. Because our dataset does not contain missing values, we will stick to SVD for matrix decomposition. 
 
 Parameter grid for SVD: 
+
     *n_epochs: the number of iterations of SGD, which is basically an iterative method used in Statistics to minimize a function.
     *lr_all: the learning rate for all parameters, which is a parameter that decides how much the parameters are adjusted in each iteration.
     *reg_all: the regularization term for all parameters, which is a penalty term added to prevent overfitting.
     
-### scoring
+### Scoring:
 
-Mean Absolute Error (MAE) computes the deviation between predicted ratings and actual ratings
+    *Mean Absolute Error (MAE) computes the deviation between predicted ratings and actual ratings
 
-Root Mean Square Error (RMSE) is similar to MAE, but places more emphasis on larger deviation (punishes gross inaccuracies)
+    *Root Mean Square Error (RMSE) is similar to MAE, but places more emphasis on larger deviation (punishes gross inaccuracies)
+
 
 ## Findings
+
+According to the MAE scores, the KNNBaseline model performed the best of all of the collaborative filtering algorithms. The MAE score was chosen due to its intuitive nature - for a rating system of 0-5 stars, an MAE of 0.7 means that the predicted rating is on average, +/- 0.7 stars off from the actual rating. The KNNBaseline algorithm was then used to create a model which recommends movies for a new user. The new user us asked to input 5 ratings of movies that have seen to address the cold start problem. 
+
+This recommendation system can be used for any adult looking to watch a new movie. If the genre was filtered to "Children", it could also be used for children, with adult supervision. 
+
 
 ## Table of Contents
 
 [Jupyter_Notebook](RecSystem.ipynb)
 
-[Summary_Slides]()
+[Summary_Slides](MovieRecPresentation.pdf)
 
 [Blog_Post](https://medium.com/@stacyshingleton/movie-recommendations-65aa0566215c)
