@@ -53,6 +53,9 @@ Memory based, or neighborhood based, collaborative filtering algorithms quantify
     *KNNWithZScore: A basic collaborative filtering algorithm, taking into account the z-score normalization of each user.
 
 Each of the algorithms will have the following parameter grid:
+    
+    *k: The (max) number of neighbors to take into account for aggregation
+    *min_k: The minimum number of neighbors to take into account for aggregation
 
     *Item-based: measure the similarity between the items that target users rates/interacts with and other items
     vs.
