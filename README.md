@@ -45,7 +45,7 @@ Surpise, a python library, will be used to analyze different collaborative filte
 
 ### memory based/neighborhood based collaborative filtering: 
 
-Memory based, or neighborhood based, collaborative filtering algorithms quantify how similar users or items are to one another. These algorithms measure similarity between users or items, by different "similarity metrics". User vs items based, and pearson, cosine and MSD similarity metrics, will all be tested within the parameter grids, for each algorithm. The following neighborhood-based collaborative filtering methods will be tested: https://surprise.readthedocs.io/en/stable/knn_inspired.html
+Memory based, or neighborhood based, collaborative filtering algorithms quantify how similar users or items are to one another. These algorithms measure similarity between users or items, by different "similarity metrics". User vs items based, and pearson, pearson_baseline, cosine and MSD similarity metrics, will all be tested within the parameter grids, for each algorithm. The following neighborhood-based collaborative filtering methods will be tested: https://surprise.readthedocs.io/en/stable/knn_inspired.html
 
     *KNNBasic: A basic collaborative filtering algorithm
     *KNNBaseline: A basic collaborative filtering algorithm taking into account a baseline rating.
@@ -67,7 +67,9 @@ Similarity metrics: https://surprise.readthedocs.io/en/stable/similarities.html
     vs.
     *cosine: Calculate cosine similarity between all user (or item) pairs
     vs.
-    *MSD: Calculates the mean squared difference between similarity between all users   
+    *MSD: Calculates the mean squared difference between similarity between all user (or item) pairs   
+    vs. 
+    *pearson_baseline: Calculates shrunk Pearson correlation coefficient between all user (or item) pairs
     
 
 ### Model based collaborative filtering: 
