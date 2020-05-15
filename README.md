@@ -9,11 +9,11 @@ Create a recommendation system using surprise that will make movie recommendatio
 
 The MovieLens database contains two datasets that were used for the project. 
 
-![movies.csv](movies.csv): containing the movie id, title and genres for 9,742 unique movies. 
+[movies.csv](movies.csv): containing the movie id, title and genres for 9,742 unique movies. 
 
 
 
-![ratings.csv](ratings.csv): containing the user id, movie id, rating and timestamp for 100,836 movie ratings. 
+[ratings.csv](ratings.csv): containing the user id, movie id, rating and timestamp for 100,836 movie ratings. 
 
 
 ## Data Analysis
